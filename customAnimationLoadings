@@ -4,6 +4,8 @@
 
 //I wouldn't recommend using GIF over Lottie ever. (100mb vs 2mb usage)
 
+import SwiftGifOrigin
+import Lottie
 
 func loaderViewGif(gifName : String) -> UIImageView
 {
