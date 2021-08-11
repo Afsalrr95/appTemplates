@@ -1,0 +1,61 @@
+//There are 2 ways to show gif like animations for loading. Using Gif and using Lottie
+//Gif requires a lot of memory when compared to Lottie. But some well defined Lottie animations are paid while you can get gif versions for free.
+//You can gif of any Lottie animation by inspecting the element and downloading the .mp4 of that Lottie and converting it to gif
+
+//I wouldn't recommend using GIF over Lottie ever. (100mb vs 2mb usage)
+
+
+func loaderViewGif(gifName : String) -> UIImageView
+{
+    let screenSize: CGRect = UIScreen.main.bounds
+    let centerX = screenSize.midX - 35
+    let centerY = screenSize.midY - 30
+    let imageView = UIImageView(frame: CGRect(x: centerX, y: centerY, width: 75, height: 75))
+    imageView.loadGif(asset: gifName)
+    cornerAllSides(item: imageView, radius: 10)
+    return imageView
+}
+
+func loaderViewLottie(jsonName : String,view : UIView)  -> AnimationView
+{
+    let subAnimationView = AnimationView(name: jsonName)
+    view.contentMode = .scaleAspectFill
+    subAnimationView.frame = view.bounds
+    subAnimationView.loopMode = .loop
+    subAnimationView.animationSpeed = 0.8
+    subAnimationView.play()
+    return subAnimationView
+}
+
+//USAGE : -
+let myGifAnimView = loaderViewGif(gifName : "gifName")
+anyView.addSubview(myGifAnimView)
+
+let myLottieAnimView = loaderViewLottie(jsonName: "lottieJsonName", view: anyView)
+anyView.addSubview(myLottieAnimView)
+
+//To save and reclaim memory, these animation views must be removed after use, especially in the case of gifs
+func removeGifLoader(view : UIView)
+{
+    for loaderView in view.subviews{
+       if loaderView is UIImageView{
+        loaderView.removeFromSuperview()
+       }
+    }
+}//Note this will remove all UIImageViews from the said view
+
+
+
+func removeLottieLoader(view : UIView)
+{
+    for loaderView in view.subviews{
+       if loaderView is AnimationView{
+        loaderView.removeFromSuperview()
+       }
+    }
+}//Note this will remove all AnimationViews from the said view
+
+
+
+
+//My suggestion is to go with LottieView as its better,faster,less memory consumption and easier to remove and handle !
