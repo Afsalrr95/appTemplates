@@ -1,0 +1,10 @@
+(POST)
+NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+
+
+(OBSERVER-GET)
+NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
+
+
+(FUNCTION)
+@objc func methodOfReceivedNotification(notification: Notification) {}
