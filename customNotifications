@@ -1,0 +1,82 @@
+//Required Pod - SwiftEntryKit
+
+func errorNotification(title : String,descrip : String)
+{
+
+
+    var attributes = EKAttributes.float
+    attributes.entryBackground = .gradient(gradient: .init(colors: [EKColor(red: 225, green: 39, blue: 39), EKColor(red: 225, green: 124, blue: 65)], startPoint: .zero, endPoint: CGPoint(x: 0, y: 1)))
+    attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+    attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+    attributes.statusBar = .light
+    attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+    let widthConstraint = EKAttributes.PositionConstraints.Edge.ratio(value: 1)
+    attributes.positionConstraints.maxSize = .init(width: widthConstraint, height: .intrinsic)
+    attributes.displayDuration = 25
+    
+    
+        
+    let title = EKProperty.LabelContent(text: title, style: EKProperty.LabelStyle.init(font: .boldSystemFont(ofSize: 15), color: .black, alignment: .center, displayMode: .inferred, numberOfLines: 1))
+    let description = EKProperty.LabelContent(text: descrip, style: EKProperty.LabelStyle.init(font: .systemFont(ofSize: 13), color: .black, alignment: .center, displayMode: .inferred, numberOfLines: 2))
+    let image = EKProperty.ImageContent(image: UIImage(named: "errorNotification")!, size: CGSize(width: 45, height: 45))
+    let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+    let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+
+    let contentView = EKNotificationMessageView(with: notificationMessage)
+    SwiftEntryKit.display(entry: contentView, using: attributes)
+
+}
+
+func successNotification(title : String,descrip : String)
+{
+
+
+    var attributes = EKAttributes.float
+    attributes.entryBackground = .gradient(gradient: .init(colors: [EKColor(red: 89, green: 255, blue: 0), EKColor(red: 182, green: 231, blue: 156)], startPoint: .zero, endPoint: CGPoint(x: 0, y: 1)))
+    attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+    attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+    attributes.statusBar = .light
+    attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+    let widthConstraint = EKAttributes.PositionConstraints.Edge.ratio(value: 1)
+    attributes.positionConstraints.maxSize = .init(width: widthConstraint, height: .intrinsic)
+    attributes.displayDuration = 25
+    
+    
+        
+    let title = EKProperty.LabelContent(text: title, style: EKProperty.LabelStyle.init(font: .boldSystemFont(ofSize: 15), color: .black, alignment: .center, displayMode: .inferred, numberOfLines: 1))
+    let description = EKProperty.LabelContent(text: descrip, style: EKProperty.LabelStyle.init(font: .systemFont(ofSize: 13), color: .black, alignment: .center, displayMode: .inferred, numberOfLines: 2))
+    let image = EKProperty.ImageContent(image: UIImage(named: "successNotification")!, size: CGSize(width: 45, height: 45))
+    let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+    let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+
+    let contentView = EKNotificationMessageView(with: notificationMessage)
+    SwiftEntryKit.display(entry: contentView, using: attributes)
+
+}
+
+func cautionNotification(title : String,descrip : String)
+{
+
+
+    var attributes = EKAttributes.float
+    attributes.entryBackground = .gradient(gradient: .init(colors: [EKColor(red: 255, green: 240, blue: 0), EKColor(red: 243, green: 237, blue: 95)], startPoint: .zero, endPoint: CGPoint(x: 0, y: 1)))
+    attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+    attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+    attributes.statusBar = .light
+    attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+    let widthConstraint = EKAttributes.PositionConstraints.Edge.ratio(value: 1)
+    attributes.positionConstraints.maxSize = .init(width: widthConstraint, height: .intrinsic)
+    attributes.displayDuration = 25
+    
+    
+        
+    let title = EKProperty.LabelContent(text: title, style: EKProperty.LabelStyle.init(font: .boldSystemFont(ofSize: 15), color: .black, alignment: .center, displayMode: .inferred, numberOfLines: 1))
+    let description = EKProperty.LabelContent(text: descrip, style: EKProperty.LabelStyle.init(font: .systemFont(ofSize: 13), color: .black, alignment: .center, displayMode: .inferred, numberOfLines: 2))
+    let image = EKProperty.ImageContent(image: UIImage(named: "cautionNotification")!, size: CGSize(width: 45, height: 45))
+    let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+    let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+
+    let contentView = EKNotificationMessageView(with: notificationMessage)
+    SwiftEntryKit.display(entry: contentView, using: attributes)
+
+}
