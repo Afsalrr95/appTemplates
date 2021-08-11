@@ -1,0 +1,21 @@
+//To Add
+func addActivityIndicator(view : UIView)
+{
+    let activityView = UIActivityIndicatorView(style: .large)
+    activityView.center = view.center
+    view.addSubview(activityView)
+    activityView.startAnimating()
+    activityView.hidesWhenStopped = true
+}
+
+
+//To remove the added Activity Indicator
+
+func removeActivityIndicator(view : UIView)
+{
+    for loaderView in view.subviews{
+       if loaderView is UIActivityIndicatorView{
+        loaderView.removeFromSuperview()
+       }
+    }
+}
