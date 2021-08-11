@@ -1,0 +1,33 @@
+import Alamofire
+
+struct Connectivity {
+  static let sharedInstance = NetworkReachabilityManager()!
+  static var isConnectedToInternet:Bool {
+      return self.sharedInstance.isReachable
+    }
+}
+
+
+//Usage :-
+
+var timer: Timer?
+func connectivityCheckerTimer()
+{
+  if Connectivity.isConnectedToInternet 
+  {
+     //Call API Here
+     timer?.invalidate()
+   }
+   else
+   {
+      timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(apiCaller), userInfo: nil, repeats: true)
+   }
+} 
+
+ @objc func actionCreateOrder () {
+   if Connectivity.isConnectedToInternet {
+            //Call API Here
+            timer?.invalidate()
+    }
+    else { //Show error notification }
+ }
